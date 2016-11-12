@@ -64,5 +64,5 @@ function tweet(){
 	})
 };
 
-setTimeout(tweet, 60*1000*1000);
+setTimeout(tweet, 3600000);
 tweet();
