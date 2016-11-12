@@ -11,8 +11,6 @@
   "dependencies": {
     "dotenv": "^2.0.0",
     "node-bing-api": "^3.0.1",
-    "request": "^2.78.0",
-    "twit": "^2.2.5",
-    "xhr": "^2.2.2"
+    "twit": "^2.2.5"
   }
 }
