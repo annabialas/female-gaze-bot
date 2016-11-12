@@ -26,11 +26,11 @@ var T = new Twit(config);
 function tweet(){
 
 	Bing.images('white hot man muscular', {
-		top: 10
+		top: 150
 	}, 
 	function(error, res, body){
 
-		var url = body.value[ Math.floor(Math.random()*10) ].thumbnailUrl;
+		var url = body.value[ Math.floor(Math.random()*150) ].thumbnailUrl;
 		console.log(url);
 
 		var file = fs.createWriteStream('file.jpg');
