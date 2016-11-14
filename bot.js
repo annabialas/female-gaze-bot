@@ -2,7 +2,7 @@
 require('dotenv').config();
 
 var Twit = require('twit');
-var http = require('https');
+var https = require('https');
 var fs = require('fs');
 var Bing = require('node-bing-api')({ accKey: process.env.bing_key });
 
@@ -30,13 +30,17 @@ function tweet(){
 	}, 
 	function(error, res, body){
 
+		fs.unlinkSync('file.jpg'); 
+
 		var url = body.value[ Math.floor(Math.random()*150) ].thumbnailUrl;
 		console.log(url);
 
-		var file = fs.createWriteStream('file.jpg');
-		var request = http.get(url, function(response) {
+		file = fs.createWriteStream('file.jpg');
+
+		var request = https.get(url, function(response) {
 			  response.pipe(file);
 		});
+
 	});
 
 	var b64content = fs.readFileSync('file.jpg', { encoding: 'base64' })
