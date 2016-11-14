@@ -30,11 +30,14 @@ function tweet(){
 	}, 
 	function(error, res, body){
 
+		// delete existing image
 		fs.unlinkSync('file.jpg'); 
 
+		// get a new random image from the bing results
 		var url = body.value[ Math.floor(Math.random()*150) ].thumbnailUrl;
 		console.log(url);
 
+		// save new image under the same name
 		file = fs.createWriteStream('file.jpg');
 
 		var request = https.get(url, function(response) {
@@ -42,6 +45,8 @@ function tweet(){
 		});
 
 	});
+
+	// posting to twitter via https://github.com/ttezel/twit
 
 	var b64content = fs.readFileSync('file.jpg', { encoding: 'base64' })
 
@@ -68,5 +73,6 @@ function tweet(){
 	})
 };
 
+// tweet once every 60 minutes so I don't exhaust all my free requests to the Bing API (1000 per month)
 setTimeout(tweet, 3600000);
 tweet();
